@@ -13,12 +13,13 @@ import java.awt.Color;
 import java.math.*;
 public class LinkedStack<T> implements StackInterface<T>{
 
-	private int size;
-	//private LinkedList<T> elements= new LinkedList<T>();
+	private int size=0;
+	
 	private Node<T> topNode=null;
 	
 	public LinkedStack(){
 		//hi!
+		System.out.println("LinkedStack Constructor...");
 	}
 
 	public void clear() {
@@ -36,7 +37,15 @@ public class LinkedStack<T> implements StackInterface<T>{
 	
 	public String toString(){
 		super.toString();
-		return "TO BE FILLED IN";
+		Node<T> temp=this.topNode;
+		StringBuilder string=new StringBuilder();
+		string.append("[");
+		while(temp != null){
+			string.append(temp.data.toString());
+			temp=temp.next;
+		}
+		string.append("]");
+		return string.toString();
 		
 	}
 
@@ -60,17 +69,19 @@ public class LinkedStack<T> implements StackInterface<T>{
 	}
 
 	public void push(T arg0) {
-		Node<T> newNode= new Node(topNode,arg0);
+		Node<T> newNode= new Node<T>(topNode,arg0);
 		this.topNode=newNode;
+		System.out.println("Pushing item...");
 		size++;
 	}
 	
 	public int size(){
-		return this.size();
+		System.out.println("Returning Size...");
+		return this.size;
 	}
 	
 	private class Node<T>{
-		private Node next;
+		private Node<T> next;
 		private T data;
 		
 		public Node(T data){
@@ -78,12 +89,12 @@ public class LinkedStack<T> implements StackInterface<T>{
 			this.data=data;
 		}
 		
-		public Node(Node nextNode, T data){
+		public Node(Node<T> nextNode, T data){
 			this.next=nextNode;
 			this.data=data;
 		}
 		
-		public Node getNextNode(){
+		public Node<T> getNextNode(){
 			return this.next;
 		}
 		

@@ -6,10 +6,10 @@ import java.awt.Color;
 import java.math.*;
 
 
-public class Disc extends Shape{
+public class Disc extends Shape implements Comparable<Disc>{
 
-	public Disc(int x, int y, int width, int height) {
-		super(0, 0, 10, 5);
+	public Disc(int width) {
+		super(0, 0, width, 5);
 		Color col = new Color((int)Math.random()*255,(int)Math.random()*255,(int)Math.random()*255);
 		this.setBackgroundColor(col);
 	}
