@@ -1,5 +1,6 @@
 package com.vorjohan.hanoi;
 
+import java.util.EmptyStackException;
 import java.util.Observable;
 
 public class HanoiSolver extends Observable{
@@ -71,5 +72,61 @@ public class HanoiSolver extends Observable{
 	public void solve(){
 		this.solveTowers(this.numDiscs,this.left,this.middle,this.right);
 	}
+	
+	private int getTopWidth(Tower tower){
+		try{
+			return tower.peek().getWidth();
+		}catch (EmptyStackException e) {
+			return 999999;
+		}
+	
+	}
+	
+	private Tower otherTower(Tower tow1, Tower tow2){
+		if((tow1==this.left && tow2==this.middle) || (tow1==this.middle && tow2==this.left)){
+			return this.right;
+		}
+		else if((tow1==this.left && tow2==this.right) || (tow1==this.right && tow2==this.left)){
+			return this.middle;
+		}
+		else{
+			return this.left;
+		}
+		
+	}
+	
+	public void reset(int widthDiff){
+		Tower start;
+		if ((getTopWidth(this.left)<getTopWidth(this.middle))&&(getTopWidth(this.left)<getTopWidth(this.right))){
+				start=this.left;			
+		}
+		else if (getTopWidth(this.middle)<getTopWidth(this.right)){
+			start=this.middle;
+		}
+		else{
+			start=this.right;
+		}
+		
+		int runningWidth=start.peek().getWidth();
+		
+		for(int i=0;i<this.numDiscs;i++){
+			runningWidth+=widthDiff;
+			if(getTopWidth(this.left)==runningWidth){
+				solveTowers(i+1,start,otherTower(start,this.left),this.left);
+				start=this.left;
+			}
+			else if(getTopWidth(this.middle)==runningWidth){
+				solveTowers(i+1,start,otherTower(start,this.middle),this.middle);
+				start=this.middle;
+			}
+			else if(getTopWidth(this.right)==runningWidth){
+				solveTowers(i+1,start,otherTower(start,this.right),this.right);
+				start=this.right;
+			}
+		}
+		solveTowers(this.numDiscs,start,otherTower(start,this.left),this.left);
+	}
+	
+	
 	
 }

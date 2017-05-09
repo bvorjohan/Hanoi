@@ -8,9 +8,10 @@ import java.math.*;
 
 public class Disc extends Shape implements Comparable<Disc>{
 
-	public Disc(int width) {
-		super(0, 0, width, 5);
-		Color col = new Color((int)Math.random()*255,(int)Math.random()*255,(int)Math.random()*255);
+	public Disc(int width, int height) {
+		super(0, 0, width, height);
+		Random rand = new Random();
+		Color col = new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256));
 		this.setBackgroundColor(col);
 	}
 

@@ -19,7 +19,7 @@ public class LinkedStack<T> implements StackInterface<T>{
 	
 	public LinkedStack(){
 		//hi!
-		System.out.println("LinkedStack Constructor...");
+		
 	}
 
 	public void clear() {
@@ -71,7 +71,7 @@ public class LinkedStack<T> implements StackInterface<T>{
 	public void push(T arg0) {
 		Node<T> newNode= new Node<T>(topNode,arg0);
 		this.topNode=newNode;
-		System.out.println("Pushing item...");
+		
 		size++;
 	}
 	
