@@ -28,9 +28,9 @@ public class GameWindow implements Observer{
 	
 	private Button solveButton;
 	private Button resetButton;
-	
-	
 
+	
+	
 	
 	
 	
@@ -67,10 +67,9 @@ public class GameWindow implements Observer{
 		
 		
 	}
-
-
-
-
+	
+	
+	
 
 
 
@@ -95,7 +94,7 @@ public class GameWindow implements Observer{
 
 
 	public void clickedSolve(Button button) {
-	    button.disable();
+	    //button.disable();
 	    new Thread() {
 	        public void run() {
 	            game.solve();
@@ -105,7 +104,7 @@ public class GameWindow implements Observer{
 	}
 	
 	public void clickedReset(Button button){
-		button.disable();
+		//button.disable();
 		new Thread() {
 			public void run(){
 				game.reset(DISC_WIDTH_DIFF);
@@ -143,6 +142,7 @@ public class GameWindow implements Observer{
 		currentDisc.moveTo(x-(currentDisc.getWidth()-this.ROD_WIDTH)/2, y-(this.DISK_GAP));
 	}
 	
+
 
 
 }

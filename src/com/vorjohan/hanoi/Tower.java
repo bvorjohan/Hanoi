@@ -23,4 +23,8 @@ public class Tower extends LinkedStack<Disc>{
 		
 		
 	}
+	
+	public void clickedDisc(){
+		System.out.println("Clicked on a Disc! Implemented in Tower");
+	}
 }

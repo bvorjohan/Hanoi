@@ -1,7 +1,8 @@
 package com.vorjohan.hanoi;
+import CS2114.Command;
 import CS2114.Shape;
-import java.util.Random;
 
+import java.util.Random;
 import java.awt.Color;
 import java.math.*;
 
@@ -33,5 +34,8 @@ public class Disc extends Shape implements Comparable<Disc>{
 		
 		return this.getWidth()==otherDisc.getWidth();
 	}
+
+
+
 
 }
